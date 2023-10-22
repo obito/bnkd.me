@@ -633,10 +633,6 @@ video {
   width: 8rem;
 }
 
-.w-auto {
-  width: auto;
-}
-
 .w-full {
   width: 100%;
 }
@@ -704,8 +700,8 @@ video {
   background-color: rgb(26 26 26 / var(--tw-bg-opacity));
 }
 
-.bg-\[url\(\'https\:\/\/kawsar\.design\/wp-content\/uploads\/2023\/02\/BG-Tx-1\.svg\'\)\] {
-  background-image: url('https://kawsar.design/wp-content/uploads/2023/02/BG-Tx-1.svg');
+.bg-\[url\(\'\.\/bg\.svg\'\)\] {
+  background-image: url('./bg.svg');
 }
 
 .bg-gradient-to-r {
@@ -892,12 +888,6 @@ video {
 .hover\:text-special-grey-space:hover {
   --tw-text-opacity: 1;
   color: rgb(220 220 220 / var(--tw-text-opacity));
-}
-
-@media (min-width: 640px) {
-  .sm\:w-1\/3 {
-    width: 33.333333%;
-  }
 }
 
 @media (min-width: 768px) {
