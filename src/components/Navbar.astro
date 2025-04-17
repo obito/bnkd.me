@@ -13,8 +13,8 @@ import ReadCVIcon from "./icons/ReadCVIcon.astro";
 
         {/* Right Side: Availability & Socials */}
         <div class="flex items-center gap-4">
-            {/* Available for Work */}
-            <a href="/contact" class="flex items-center gap-2 text-sm text-dark-blue hover:opacity-80 transition-opacity">
+            {/* Available for Work - Hidden on mobile */}
+            <a href="/contact" class="hidden md:flex items-center gap-2 text-sm text-dark-blue hover:opacity-80 transition-opacity">
                 <span class="relative flex h-3 w-3">
                     <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-available-green opacity-75"></span>
                     <span class="relative inline-flex rounded-full h-3 w-3 bg-available-green"></span>
@@ -22,8 +22,8 @@ import ReadCVIcon from "./icons/ReadCVIcon.astro";
                  available for work
             </a>
 
-            {/* Separator */}
-            <div class="h-5 w-px bg-separator-grey"></div>
+            {/* Separator - Hidden on mobile */}
+            <div class="hidden md:block h-5 w-px bg-separator-grey"></div>
 
             {/* Social Icons */}
             <div class="flex items-center gap-3">

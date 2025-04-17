@@ -41,15 +41,15 @@ const sitePreviewIcon = `<svg xmlns="http://www.w3.org/2000/svg" fill="none" vie
 
     {/* Project Header Section - Increased top padding */}
     <section class="w-full pt-32 sm:pt-40 lg:pt-48 pb-8 sm:pb-12 bg-slate-100"> 
-        <div class="container mx-auto "> 
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8"> 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 lg:gap-24 md:items-stretch">
                 
                 {/* Left Column: Title, Description, Buttons */}
                 <div class="flex flex-col items-start">
-                    <h1 class="text-5xl md:text-6xl lg:text-7xl font-serif font-normal text-dark-blue mb-6 md:mb-8 animate-on-scroll">
+                    <h1 class="text-4xl md:text-6xl lg:text-7xl font-serif font-normal text-dark-blue mb-6 md:mb-8 animate-on-scroll">
                         {title}
                     </h1>
-                    <p class="text-lg text-slate-600 mb-8 md:mb-10 max-w-lg animate-on-scroll delay-100">
+                    <p class="text-lg text-slate-600 mb-8 md:mb-10 max-w-lg animate-on-scroll delay-100 text-justify">
                         {description || 'Project description coming soon.'} 
                     </p>
                     <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4 animate-on-scroll delay-200">
@@ -78,7 +78,7 @@ const sitePreviewIcon = `<svg xmlns="http://www.w3.org/2000/svg" fill="none" vie
 
                 {/* Right Column: Details Grid */}
                 {(services && services.length > 0 || tools && tools.length > 0 || field && field.length > 0 || year) && (
-                    <div class="grid grid-cols-2 gap-y-8 gap-x-4 md:gap-x-8 pt-2 animate-on-scroll delay-300">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-y-8 gap-x-4 md:gap-x-8 pt-2 animate-on-scroll delay-300">
                         {/* Services */}
                         {services && services.length > 0 && (
                             <div>
