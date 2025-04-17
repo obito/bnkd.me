@@ -18,9 +18,9 @@ tools:
   - Python
   - TypeScript
 field:
-   - Media
-   - AI
-   - Politic
+  - Media
+  - AI
+  - Politic
 year: 2024-2025
 ---
 
@@ -76,4 +76,3 @@ sequenceDiagram
 ```
 
 This work established a scalable, efficient, and highly maintainable infrastructure at Polyfact, laying a solid foundation for future growth.
-

@@ -26,13 +26,11 @@ The main goal of TF1 is to provide innovative broadcasting solutions as France's
 
 During my freelance engagement on TF1's Pub Team, I contributed significantly across various core platforms:
 
-
 # WizAds – Ad Delivery Platform
 
 Developed WizAds, an advanced ad proxy responsible for connecting TF1's devices—apps, IPTV, and Connected TVs—to our primary ad providers. WizAds enriches ad requests with essential tracking data and partner-specific information, significantly enhancing reliability and performance of ad deliveries across all platforms.
 
 # TV Segmentée (TVS)
-
 
 I was actively involved in the development of TF1's TV Segmentée, a targeted advertising solution that personalizes viewer experiences based on various demographic and geographic criteria. This approach significantly improved ad engagement by providing relevant content to segmented audiences.
 
@@ -50,6 +48,6 @@ Developed and refined Adventory, a unified platform managing both streaming and 
 
 When a brand aims to advertise on TF1, our sales team leverages Adventory. They specify detailed campaign criteria—such as geographical targeting, demographics, device types, time frames, and budgets. Adventory then instantly generates precise quotes, including total impressions, daily budgets, and accurate CPM (Cost Per Mille), streamlining the process for both TF1 and its advertising partners.
 
---- 
+---
 
 This freelance experience at TF1 not only strengthened my expertise in scalable and reliable backend solutions but also significantly improved my proficiency in cloud infrastructure management and automation technologies.
