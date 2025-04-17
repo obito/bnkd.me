@@ -1,6 +1,9 @@
 ---
 import { Image } from "astro:assets";
 import profileImage from "../assets/youssef-avatar.png"; 
+import GitHubIcon from "./icons/GitHubIcon.astro";
+import LinkedInIcon from "./icons/LinkedInIcon.astro";
+import ReadCVIcon from "./icons/ReadCVIcon.astro";
 ---
 <section class="bg-bg-light py-16">
   <div class="container mx-auto px-4">
@@ -30,10 +33,17 @@ import profileImage from "../assets/youssef-avatar.png";
 
         <p class="text-slate-600 mb-6">Software Engineer. Based in Paris.</p>
 
+        {/* Social Icons - Updated with Navbar icons/links */}
         <div class="flex justify-center space-x-3 mb-8">
-          <button class="w-10 h-10 bg-slate-100 rounded-full flex items-center justify-center text-slate-500 hover:bg-slate-200 transition-colors">X</button>
-          <button class="w-10 h-10 bg-slate-100 rounded-full flex items-center justify-center text-slate-500 hover:bg-slate-200 transition-colors">Ig</button>
-          <button class="w-10 h-10 bg-slate-100 rounded-full flex items-center justify-center text-slate-500 hover:bg-slate-200 transition-colors">Fb</button>
+          <a href="/resume.pdf" target="_blank" rel="noopener" class="w-10 h-10 bg-slate-100 rounded-full flex items-center justify-center text-slate-500 hover:bg-slate-200 transition-colors">
+            <ReadCVIcon class="w-5 h-5 fill-current"/>
+          </a>
+          <a href="https://www.linkedin.com/in/youssef-bn" target="_blank" rel="noopener" class="w-10 h-10 bg-slate-100 rounded-full flex items-center justify-center text-slate-500 hover:bg-slate-200 transition-colors">
+            <LinkedInIcon class="w-5 h-5 fill-current"/>
+          </a>
+          <a href="https://github.com/obito" target="_blank" rel="noopener" class="w-10 h-10 bg-slate-100 rounded-full flex items-center justify-center text-slate-500 hover:bg-slate-200 transition-colors">
+            <GitHubIcon class="w-5 h-5 fill-current"/>
+          </a>
         </div>
 
         {/* Contact Button - Styled like Hero 'Let's Chat' */}
