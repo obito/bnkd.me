@@ -1,0 +1,68 @@
+---
+import ProjectCard from './ProjectCard.astro';
+import { getCollection, type CollectionEntry } from 'astro:content';
+
+// Fetch all entries from the 'projects' collection
+const projects = await getCollection('projects');
+
+// Sort projects by the 'order' frontmatter property
+const sortedProjects = projects.sort((a: CollectionEntry<'projects'>, b: CollectionEntry<'projects'>) => 
+    (a.data.order ?? Infinity) - (b.data.order ?? Infinity)
+);
+
+// Quadruple projects for smoother looping animation
+const duplicatedProjects = [
+    ...sortedProjects, 
+    ...sortedProjects, 
+    ...sortedProjects, 
+    ...sortedProjects
+];
+
+// Calculate animation duration based on number of items
+// Duration now covers one segment of the quadrupled list
+const animationDuration = sortedProjects.length * 6; // seconds per original item set
+---
+
+<div class="w-full pb-10 sm:pb-16 overflow-hidden bg-bg-light">
+    <div 
+        class="relative w-full"
+        style={`--animation-duration: ${animationDuration}s;`}
+    >
+        {/* Fade mask using arbitrary property */}
+        <div class="absolute inset-y-0 left-0 w-10 z-10 bg-gradient-to-r from-bg-light to-transparent pointer-events-none"></div>
+        <div class="absolute inset-y-0 right-0 w-10 z-10 bg-gradient-to-l from-bg-light to-transparent pointer-events-none"></div>
+        
+        {/* Scrolling Container */}
+        <div class="relative overflow-hidden">
+            <ul class="flex w-max animate-scroll list-none p-0 m-0">
+                {duplicatedProjects.map((project) => (
+                    <li class="mx-4">
+                        <ProjectCard project={project} />
+                    </li>
+                ))}
+            </ul>
+        </div>
+    </div>
+</div>
+
+<style>
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    /* Translate by the width of ONE original (non-duplicated) list segment */
+    transform: translateX(calc(-100% / 4)); 
+  }
+}
+
+.animate-scroll {
+  /* Multiply duration by 4 because the track is 4x longer */
+  animation: scroll calc(var(--animation-duration) * 4) linear infinite;
+}
+
+/* Added direct hover pause for the scrolling list */
+.animate-scroll:hover {
+  animation-play-state: paused;
+}
+</style> 

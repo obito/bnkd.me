@@ -1,0 +1,153 @@
+---
+// src/layouts/ProjectLayout.astro
+import Prose from '../components/Prose.astro';
+import TellMe from '../components/TellMe.astro';
+import Layout from './Layout.astro'; 
+import { Image } from "astro:assets";
+
+import type { CollectionEntry } from 'astro:content';
+
+// Define props based on the project frontmatter we need to display
+interface Props {
+    title: string;
+    description?: string;
+    services?: string[];
+    tools?: string[];
+    field?: string[];
+    year?: string;
+    imageSrc: CollectionEntry<'projects'>['data']['imageSrc']; // Keep image type
+    imageAlt: string;
+    sitePreviewUrl?: string;
+}
+
+const { 
+    title, 
+    description, 
+    services, 
+    tools, 
+    field,
+    year,
+    imageSrc, 
+    imageAlt, 
+    sitePreviewUrl 
+} = Astro.props;
+
+// --- Button Icons (SVG as strings for set:html) ---
+const contactIcon = `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" /></svg>`;
+const sitePreviewIcon = `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>`;
+---
+
+<Layout title={title} description={description} image={imageSrc?.src}>
+
+    {/* Project Header Section - Increased top padding */}
+    <section class="w-full pt-32 sm:pt-40 lg:pt-48 pb-8 sm:pb-12 bg-slate-100"> 
+        <div class="container mx-auto "> 
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 lg:gap-24 md:items-stretch">
+                
+                {/* Left Column: Title, Description, Buttons */}
+                <div class="flex flex-col items-start">
+                    <h1 class="text-5xl md:text-6xl lg:text-7xl font-serif font-normal text-dark-blue mb-6 md:mb-8 animate-on-scroll">
+                        {title}
+                    </h1>
+                    <p class="text-lg text-slate-600 mb-8 md:mb-10 max-w-lg animate-on-scroll delay-100">
+                        {description || 'Project description coming soon.'} 
+                    </p>
+                    <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4 animate-on-scroll delay-200">
+                         {/* Contact Button - Dark Style */}
+                         <a
+                            href="/contact" 
+                            class="inline-flex items-center justify-center gap-2 px-6 py-3 text-white font-medium rounded-lg shadow-dark-button-inspired bg-[linear-gradient(127deg,rgb(14,28,41)-68%,rgb(50,61,104)100%)] hover:brightness-110 active:brightness-95 transition-all duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-slate-100 focus:ring-blue-500 hover:-translate-y-0.5"
+                        >
+                            <Fragment set:html={contactIcon} />
+                            <span>Contact Me</span>
+                        </a>
+                        {/* Site Preview Button - Light Style */}
+                        {sitePreviewUrl && (
+                            <a
+                                href={sitePreviewUrl}
+                                target="_blank" 
+                                rel="noopener noreferrer"
+                                class="inline-flex items-center justify-center gap-2 px-6 py-3 text-slate-800 font-medium rounded-lg shadow-light-button-inspired bg-[linear-gradient(126deg,rgba(255,255,255,0.8)-44%,rgba(240,248,255,0.9)55%)] hover:brightness-95 active:brightness-90 transition-all duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-slate-100 focus:ring-blue-500 hover:-translate-y-0.5"
+                            >
+                                <Fragment set:html={sitePreviewIcon} />
+                                <span>Site Preview</span>
+                            </a>
+                        )}
+                    </div>
+                </div>
+
+                {/* Right Column: Details Grid */}
+                {(services && services.length > 0 || tools && tools.length > 0 || field && field.length > 0 || year) && (
+                    <div class="grid grid-cols-2 gap-y-8 gap-x-4 md:gap-x-8 pt-2 animate-on-scroll delay-300">
+                        {/* Services */}
+                        {services && services.length > 0 && (
+                            <div>
+                                <h3 class="text-sm font-semibold text-dark-blue uppercase tracking-wider mb-3">Services</h3>
+                                <p class="text-base text-slate-600 leading-relaxed break-words">
+                                    {services.join(', ')}
+                                </p>
+                            </div>
+                        )}
+                        {/* Field */}
+                        {field && field.length > 0 && (
+                            <div>
+                                <h3 class="text-sm font-semibold text-dark-blue uppercase tracking-wider mb-3">Field</h3>
+                                <p class="text-base text-slate-600 leading-relaxed break-words">
+                                    {field.join(', ')}
+                                </p>
+                            </div>
+                        )}
+                        {/* Tools */}
+                        {tools && tools.length > 0 && (
+                             <div>
+                                <h3 class="text-sm font-semibold text-dark-blue uppercase tracking-wider mb-3">Tools</h3>
+                                <p class="text-base text-slate-600 leading-relaxed break-words">
+                                    {tools.join(', ')}
+                                </p>
+                            </div>
+                        )}
+                        {/* Year */}
+                        {year && (
+                            <div>
+                                <h3 class="text-sm font-semibold text-dark-blue uppercase tracking-wider mb-3">Year</h3>
+                                <p class="text-base text-slate-600 leading-relaxed">
+                                    {year}
+                                </p>
+                            </div>
+                        )}
+                    </div>
+                )}
+            </div>
+        </div>
+    </section> 
+
+    {/* Project Image Section */}
+    <section class="w-full pb-8 sm:pb-12 bg-slate-100">
+        <div class="container mx-auto px-4 flex justify-center">
+          <!-- Screenshot with a thin white border, rounded corners & shadow -->
+          <div class="bg-white flex justify-center animate-on-scroll delay-100">
+            <Image
+              src={imageSrc}
+              alt={imageAlt}
+              width={1000}
+              height={1000}
+              format={'webp'}
+              class="max-w-full h-auto rounded-2xl border-15 border-white shadow-lg"
+              />
+          </div>
+        </div>
+      </section>
+
+    {/* Markdown Content Section */}
+    <section class="w-full py-8 sm:py-12 bg-slate-100">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            {/* Removed prose classes for default Markdown styling */}
+            <Prose class="animate-on-scroll delay-200">
+                <slot /> <!-- Default slot for Markdown content -->
+            </Prose>
+        </div>
+    </section> 
+
+    <TellMe class="mt-32" />
+
+</Layout> 

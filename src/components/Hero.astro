@@ -1,0 +1,177 @@
+---
+// src/components/Hero.astro
+import { Image } from "astro:assets";
+
+// Import your images - adjust paths if needed
+import youssefAvatar from "../assets/youssef-avatar.png";
+import cloudIcon from "../assets/cloud-icon.png";
+// Ensure moonIcon path is correct and file exists
+import plushiesIcon from "../assets/plushies-icon.png";
+
+---
+
+<section
+	class="relative w-full flex items-center justify-center py-20 md:py-32 overflow-hidden"
+	{/* Changed background */}
+>
+	{
+		/* Removed the separate gradient div, section now has solid background */
+	}
+
+	<div class="container mx-auto px-4 z-10">
+		<div
+			class="max-w-4xl mx-auto text-center flex flex-col items-center"
+		>
+			{/* "I'm Youssef" Line - Using scroll animation */}
+			<div
+				class="flex items-center justify-center gap-4 mb-2 md:mb-4 animate-on-scroll"
+			>
+				<Image
+					src={youssefAvatar}
+					alt="Youssef Avatar"
+					{/* Updated alt text */}
+					class="w-16 h-16 md:w-20 md:h-20 rounded-2xl shadow-md object-cover"
+					loading="eager"
+					format="webp"
+					quality={80}
+				/>
+				<h2
+					class="text-5xl md:text-6xl lg:text-7xl font-serif text-slate-800"
+				>
+					I'm Youssef
+				</h2>
+			</div>
+
+			{/* "Software Engineer" Line - Using scroll animation + delay */}
+			<div
+				class="flex items-center justify-center gap-4 mb-6 md:mb-8 animate-on-scroll delay-100"
+			>
+				<h1
+					class="text-6xl md:text-7xl lg:text-8xl font-serif text-slate-800 tracking-tighter"
+				>
+					Software Engineer
+				</h1>
+				<Image
+					src={cloudIcon}
+					alt="Cloud Icon"
+					class="w-16 h-16 md:w-20 md:h-20 rounded-2xl shadow-md object-cover"
+					loading="eager"
+					format="webp"
+					quality={80}
+				/>
+				<Image
+					src={plushiesIcon}
+					alt="Plushies Icon"
+					class="w-16 h-16 md:w-20 md:h-20 rounded-2xl shadow-md object-cover"
+					loading="eager"
+					format="webp"
+					quality={80}
+				/>
+			</div>
+
+			{/* Description Paragraph - Using scroll animation + delay */}
+			<p
+				class="max-w-xl mx-auto text-lg md:text-xl text-slate-600 mb-8 md:mb-10 animate-on-scroll delay-200"
+			>
+			I craft thoughtful and impactful products, collaborating with companies at every stage.
+			</p>
+
+			{/* --- NEUMORPHIC BUTTONS --- */}
+			<div
+				class="flex flex-col sm:flex-row items-center justify-center gap-6 animate-on-scroll delay-300"
+			>
+				{/* Dark Button */}
+				<a
+					href="/contact"
+					class="inline-flex items-center justify-center gap-2 px-7 py-3.5 text-white font-medium rounded-[10px] shadow-dark-button-inspired bg-[linear-gradient(127deg,rgb(14,28,41)-68%,rgb(50,61,104)100%)] hover:brightness-110 active:brightness-95 transition-all duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-bg-light focus:ring-blue-500"
+				>
+					{/* Inline SVG Icon */}
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						fill="none"
+						viewBox="0 0 24 24"
+						stroke-width="1.5"
+						stroke="currentColor"
+						class="w-5 h-5"
+					>
+						<path
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"
+						></path>
+					</svg>
+					<span>Let's chat</span>
+				</a>
+
+				{/* Light Neumorphic Button */}
+				<a
+					href="/projects"
+					class="inline-flex items-center justify-center gap-2 px-7 py-3.5 text-slate-800 font-medium rounded-[10px] shadow-light-button-inspired bg-[linear-gradient(126deg,rgba(94,120,143,0.5)-44%,rgba(240,248,255,0.9)55%)] hover:brightness-95 active:brightness-90 transition-all duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-bg-light focus:ring-blue-500"
+				>
+					{/* Inline SVG Icon */}
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						fill="none"
+						viewBox="0 0 24 24"
+						stroke-width="1.5"
+						stroke="currentColor"
+						class="w-5 h-5"
+					>
+						<path
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
+						></path>
+					</svg>
+					<span>See Projects</span>
+				</a>
+			</div>
+			{
+				/* Optional: Subtle Cloud Graphics like in the original */
+			}
+			<div
+				class="absolute bottom-0 right-0 -z-10 opacity-30 pointer-events-none"
+			>
+				<svg
+					width="404"
+					height="404"
+					fill="none"
+					viewBox="0 0 404 404"
+					role="img"
+					aria-labelledby="cloud-bg-title"
+				>
+					<title id="cloud-bg-title">
+						Cloud background graphic
+					</title>
+					<defs>
+						<pattern
+							id="bg-pattern"
+							x="0"
+							y="0"
+							width="20"
+							height="20"
+							patternUnits="userSpaceOnUse"
+						>
+							<rect
+								x="0"
+								y="0"
+								width="4"
+								height="4"
+								class="text-gray-200"
+								fill="currentColor"
+							></rect>
+						</pattern>
+					</defs>
+					<rect
+						width="404"
+						height="404"
+						fill="url(#bg-pattern)"></rect>
+					<path
+						d="M202 404c111.482 0 202-90.518 202-202S313.482 0 202 0 0 90.518 0 202s90.518 202 202 202z"
+						fill="white"
+						fill-opacity="0.5"></path>
+				</svg>
+			</div>
+		</div>
+	</div>
+</section>

@@ -1,0 +1,147 @@
+---
+import { Image } from "astro:assets";
+import CodeIcon from "./icons/CodeIcon.astro";
+import PaintBrushIcon from "./icons/PaintBrushIcon.astro";
+import HeadCircuitIcon from "./icons/HeadCircuitIcon.astro";
+import PuzzlePieceIcon from "./icons/PuzzlePieceIcon.astro";
+import cloudVinyl from "../assets/cloud-vinyl.png";
+import elephants from "../assets/elephants.png";
+
+interface ServiceItem {
+  title: string;
+  description: string;
+  icon: (_props: Record<string, any>) => any;
+  iconBgClass: string;
+  iconColorClass: string;
+  imageUrl?: ImageMetadata | null;
+  imageAlt?: string | null;
+  gridSpan?: string;
+}
+
+const services: ServiceItem[] = [
+  {
+    title: "Backend & Infra", // Top Row - Takes 2 columns
+    description:
+      "Building scalable, secure backend systems and infrastructure that power your digital products, ensure reliability at scale, and enable fast iteration for evolving business needs.",
+    icon: CodeIcon, // Use string identifier
+    iconBgClass: "bg-bento-card-bg",
+    iconColorClass: "text-dark-blue/50",
+    imageUrl: cloudVinyl,
+    imageAlt: "Abstract UX/UI design image",
+    gridSpan: "md:col-span-2 md:row-span-1", // Span 2 cols, 1 row
+  },
+  {
+    title: "Frontend & UX", // Top Row - Takes 1 column
+    description:
+      "Crafting smooth and engaging digital interactions that elevate user satisfaction, strengthen brand presence, and drive meaningful connections between products and people.",
+    icon: PaintBrushIcon,
+    iconBgClass: "bg-dark-blue",
+    iconColorClass: "text-white",
+    imageUrl: null,
+    imageAlt: null,
+    gridSpan: "md:col-span-1 md:row-span-1", // Span 1 col, 1 row
+  },
+  {
+    title: "AI & Automation", // Bottom Row - Takes 1 column
+    description:
+      "Implementing AI and automation to streamline workflows, reduce manual overhead, and unlock new levels of efficiency and productivity across your business.",
+    icon: HeadCircuitIcon, // Use string identifier
+    iconBgClass: "bg-dark-blue",
+    iconColorClass: "text-white",
+    imageUrl: null,
+    imageAlt: null,
+    gridSpan: "md:col-span-1 md:row-span-1", // Span 1 col, 1 row
+  },
+  {
+    title: "Product Thinking", // Bottom Row - Takes 2 columns
+    description:
+      "Developing a deep understanding of user needs and business objectives to design and deliver intuitive, goal-driven digital products that create real value and drive growth.",
+    icon: PuzzlePieceIcon, // Use string identifier
+    iconBgClass: "bg-dark-blue",
+    iconColorClass: "text-white",
+    imageUrl: elephants, // Added placeholder image
+    imageAlt: "Abstract product thinking image", // Added alt text
+    gridSpan: "md:col-span-2 md:row-span-1", // Span 2 cols, 1 row
+  },
+];
+---
+
+<section id="services" class="w-full relative bg-bg-light">
+  {/* Inner wrapper: Reduced negative margin for more space above */}
+  <div class="relative z-10 w-full bg-slate-100 rounded-t-[80px] md:rounded-t-[120px] rounded-b-[80px] md:rounded-b-[120px] -mt-4 md:-mt-6 pt-24 sm:pt-36 pb-16 sm:pb-24">
+    
+    {/* Content Container: Constrains width of header and grid */}
+    <div class="container mx-auto px-4">
+
+      {/* Section Header - Using scroll animation */}
+      <div class="text-center mb-12 md:mb-16 animate-on-scroll">
+        <button
+          class="inline-flex items-center gap-3 px-6 py-2.5 mb-6 text-base rounded-full bg-white/90 border border-slate-200/80 shadow-sm text-slate-600 backdrop-blur-sm"
+        >
+          <svg class="w-5 h-5 fill-dark-blue/80" viewBox="0 0 256 256"
+            ><g
+              ><path
+                d="M223.68,66.15,135.68,18a15.88,15.88,0,0,0-15.36,0l-88,48.17a16,16,0,0,0-8.32,14v95.64a16,16,0,0,0,8.32,14l88,48.17a15.88,15.88,0,0,0,15.36,0l88-48.17a16,16,0,0,0,8.32-14V80.18A16,16,0,0,0,223.68,66.15ZM128,120,47.65,76,128,32l80.35,44Zm8,99.64V133.83l80-43.78v85.76Z"
+              ></path></g
+            ></svg
+          >
+          Services
+        </button>
+        <h2
+          class="text-4xl md:text-5xl lg:text-6xl font-serif font-medium text-dark-blue mb-5"
+        >
+          Crafting Digital Excellence
+        </h2>
+        <p class="text-lg md:text-xl text-slate-600 max-w-2xl mx-auto">
+          Building performant, scalable apps that delight users and accelerate your growth.
+        </p>
+      </div>
+
+      {/* Grid - Using scroll animation (applied to cards below) */}
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+          {services.map((service, index) => {
+            const hasImage = Boolean(service.imageUrl);
+            const delay = (index + 1) * 100; 
+        
+            return (
+              <div
+                class={`relative bg-bento-card-bg rounded-2xl shadow-bento-card overflow-hidden transition-transform hover:-translate-y-1 hover:shadow-xl ${service.gridSpan ?? ""} animate-on-scroll`}
+                style={`animation-delay: ${delay}ms;`} 
+              >
+                <div class="grid grid-cols-1 md:grid-cols-2 h-full">
+                  {hasImage && (
+                    <div class="p-6 flex items-center justify-center">
+                      <div class="w-full aspect-video rounded-2xl overflow-hidden border border-white/10 shadow-md">
+                        <Image
+                          src={service.imageUrl!}
+                          alt={service.imageAlt || service.title}
+                          width={800}
+                          height={600}
+                          class="w-full h-full object-cover"
+                        />
+                      </div>
+                    </div>
+                  )}
+        
+                  <div class={`p-6 flex flex-col gap-4 ${hasImage ? "" : "md:col-span-2"}`}>
+                    <div
+                      class={`w-10 h-10 rounded-full flex items-center justify-center shadow-bento-icon ${service.iconBgClass}`}
+                    >
+                      <service.icon class={`w-5 h-5 ${service.iconColorClass}`} />
+                    </div>
+                    <h3 class="text-xl md:text-2xl font-medium text-dark-blue">
+                      {service.title}
+                    </h3>
+                    <p class="text-slate-600 text-base leading-relaxed">
+                      {service.description}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+      </div>
+
+    </div> { /* End of content container */ }
+  </div> { /* End of inner wrapper */ }
+</section>

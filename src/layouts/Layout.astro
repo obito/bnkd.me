@@ -1,3 +1,8 @@
+---
+import "../styles/global.css";
+import Navbar from '../components/Navbar.astro';
+---
+
 <!doctype html>
 <html lang="en">
 	<head>
@@ -6,9 +11,15 @@
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<title>Astro Basics</title>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Instrument+Serif&display=swap"
+			rel="stylesheet"
+		/>
 	</head>
-	<body>
+	<body class="bg-slate-100">
+		<Navbar />
 		<slot />
+		<script src="../scripts/scrollAnimation.js"></script>
 	</body>
 </html>
 

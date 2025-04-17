@@ -1,0 +1,84 @@
+---
+
+// Define the process steps data
+const processSteps = [
+  {
+    number: "01",
+    title: "Initial Consultation",
+    description: "Reach out to discuss your vision. We’ll outline your project needs, scope, and timeline clearly.",
+    stepLabel: "step1",
+  },
+  {
+    number: "02",
+    title: "Strategy & Roadmap",
+    description: "I’ll develop a detailed technical roadmap tailored specifically to your goals, ensuring a scalable and reliable solution.",
+    stepLabel: "step2",
+  },
+  {
+    number: "03",
+    title: "Development & Iteration",
+    description: "Watch your vision come to life through continuous development, clear communication, and regular check-ins.",
+    stepLabel: "step3",
+  },
+  {
+    number: "04",
+    title: "Delivery & Ongoing Support",
+    description: "Receive a fully-tested, production-ready solution, along with proactive support to ensure long-term success.",
+    stepLabel: "step4",
+  },
+];
+---
+
+<section id="process" class="w-full py-16 sm:py-24 bg-slate-50">
+  <div class="container mx-auto px-4">
+    {/* Section Header */}
+    <div class="text-center mb-12 md:mb-16">
+      {/* Process Badge - Adjusted size to match Services */}
+      <button
+        class="inline-flex items-center gap-3 px-6 py-2.5 mb-6 text-base rounded-full bg-white/90 border border-slate-200/80 shadow-sm text-slate-600 backdrop-blur-sm"
+      >
+        {/* Placeholder Icon - Replace with actual Process icon */}
+        <svg class="w-5 h-5 fill-slate-500" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 10.5V5.5L1 8L4 10.5Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M12 10.5V5.5L15 8L12 10.5Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M9.5 3.5L6.5 12.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path></svg>
+        Process
+      </button>
+      {/* Title */}
+      <h2
+        class="text-4xl md:text-5xl lg:text-6xl font-serif font-medium text-dark-blue mb-3"
+      >
+      From Idea to Launch
+    </h2>
+      {/* Subtitle */}
+      <p class="text-lg md:text-xl text-slate-600 max-w-2xl mx-auto">
+        A streamlined, professional approach ensuring clarity and excellence at every step.
+    </p>
+    </div>
+
+    {/* Process Grid */}
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+      {processSteps.map((step) => (
+        <div class="bg-white rounded-2xl shadow-lg p-6 md:p-8 flex flex-col">
+          {/* Numbered Badge */}
+          <div class="w-10 h-10 mb-5 flex items-center justify-center bg-dark-blue text-white rounded-full font-semibold text-sm">
+            {step.number}
+          </div>
+          {/* Card Title */}
+          <h3 class="text-xl md:text-2xl font-medium text-dark-blue mb-3">
+            {step.title}
+          </h3>
+          {/* Card Description */}
+          <p class="text-slate-600 text-base leading-relaxed flex-grow mb-6">
+            {step.description}
+          </p>
+          {/* Dotted Line */}
+          <hr class="border-t border-dashed border-slate-300 my-4" />
+          {/* Step Badge */}
+          <div class="flex justify-end">
+            <span class="inline-block bg-slate-100 text-slate-500 text-xs font-medium px-3 py-1 rounded-full">
+              {step.stepLabel}
+            </span>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

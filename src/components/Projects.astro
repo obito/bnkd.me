@@ -1,0 +1,94 @@
+---
+import ProjectCard from './ProjectCard.astro';
+import { getCollection, type CollectionEntry } from 'astro:content';
+import { Image } from 'astro:assets';
+
+// Placeholder imports for avatar images
+import TF1Logo from '../assets/tf1-logo.png';
+import PolyfactLogo from '../assets/polyfact-logo.webp';
+import FaaasterLogo from '../assets/faaaster-logo.webp';
+import CoinArcLogo from '../assets/coinarc-logo.png';
+
+// Fetch all entries from the 'projects' collection
+let sortedProjects: CollectionEntry<'projects'>[] = [];
+try {
+  const projects = await getCollection('projects');
+  // Sort projects by the 'order' frontmatter property
+  sortedProjects = projects.sort((a: CollectionEntry<'projects'>, b: CollectionEntry<'projects'>) => 
+      (a.data.order ?? Infinity) - (b.data.order ?? Infinity)
+  );
+} catch (e) {
+  console.error("Error fetching or sorting projects:", e);
+  // Assign empty array or handle error as appropriate
+  sortedProjects = [];
+}
+
+
+// --- Button Icons (SVG as strings for set:html) ---
+const contactIcon = `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" /></svg>`;
+const loadMoreIcon = `<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m-15.357-2a8.001 8.001 0 0115.357-2m0 0H15"></path></svg>`;
+---
+
+<section id="projects" class="w-full py-16 sm:py-24 bg-slate-50">
+  <div class="container mx-auto px-4">
+    
+    {/* Section Header - Apply scroll animation */}
+    <div class="text-center mb-12 md:mb-20 animate-on-scroll">
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-serif font-medium text-dark-blue mb-6">
+        The Architecture Of Excellence
+      </h1>
+      
+      {/* Avatar Pile & Trust Text - Add delay */}
+      <div class="flex items-center justify-center gap-3 mb-6 animate-on-scroll delay-100">
+        <div class="flex -space-x-2 overflow-hidden">
+          <Image src={TF1Logo} alt="TF1 Logo" class="inline-block h-8 w-8 rounded-full ring-2 ring-white object-contain bg-white" width={32} height={32} loading={"eager"}/>
+          <Image src={PolyfactLogo} alt="Polyfact Logo" class="inline-block h-8 w-8 rounded-full ring-2 ring-white object-contain bg-white" width={32} height={32} loading={"eager"}/>
+          <Image src={FaaasterLogo} alt="Faaaster Logo" class="inline-block h-8 w-8 rounded-full ring-2 ring-white object-contain bg-white" width={32} height={32} loading={"eager"}/>
+          <Image src={CoinArcLogo} alt="CoinArc Logo" class="inline-block h-8 w-8 rounded-full ring-2 ring-white object-contain bg-white" width={32} height={32} loading={"eager"}/>
+        </div>
+        <p class="text-sm text-slate-600">Trusted by 10+ Companies worldwide</p>
+      </div>
+
+      {/* Contact Button - Add delay */}
+      <a
+        href="/contact" 
+        class="inline-flex items-center justify-center gap-2 px-6 py-3 text-white font-medium rounded-lg shadow-dark-button-inspired bg-[linear-gradient(127deg,rgb(14,28,41)-68%,rgb(50,61,104)100%)] hover:brightness-110 active:brightness-95 transition-all duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-slate-50 focus:ring-blue-500 hover:-translate-y-0.5 animate-on-scroll delay-200"
+      >
+        <Fragment set:html={contactIcon} />
+        <span>Contact Me</span>
+      </a>
+    </div>
+
+    {/* Projects Grid - Apply scroll animation to cards */}
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12 md:mb-16">
+      {sortedProjects.length > 0 ? (
+        sortedProjects.slice(0, 4).map((project, index) => {
+          // Calculate delay based on index (staggered)
+          const delay = (index % 2 + 1) * 150; // Stagger delay based on column
+          return (
+            <div class="animate-on-scroll" style={`animation-delay: ${delay}ms;`}>
+              <ProjectCard project={project} />
+            </div>
+          );
+        })
+      ) : (
+        <p class="md:col-span-2 text-center text-slate-500 animate-on-scroll">No projects found.</p>
+      )}
+    </div>
+
+    {/* Load More Button - Apply scroll animation */}
+    {sortedProjects.length > 4 && (
+      <div class="text-center animate-on-scroll delay-300">
+        <button
+          type="button" 
+          class="inline-flex items-center justify-center gap-2 px-6 py-3 text-white font-medium rounded-lg shadow-dark-button-inspired bg-[linear-gradient(127deg,rgb(14,28,41)-68%,rgb(50,61,104)100%)] hover:brightness-110 active:brightness-95 transition-all duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-slate-50 focus:ring-blue-500 hover:-translate-y-0.5"
+        >
+          <Fragment set:html={loadMoreIcon} />
+          <span>Load More</span>
+        </button>
+      </div>
+    )}
+
+  </div>
+</section>
+

@@ -1,0 +1,102 @@
+@import "tailwindcss";
+@plugin '@tailwindcss/typography';
+
+@theme {
+  /* src/styles/global.css (or your global stylesheet) */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Complex shadow inspired by the target example */
+  --shadow-dark-button-inspired:
+    inset 0px 1px 2px 0px rgb(184, 193, 230),
+    0px 0.7px 0.7px -0.6px rgba(46, 64, 128, 0.345),
+    0px 1.8px 1.8px -1.2px rgba(46, 64, 128, 0.337),
+    0px 3.6px 3.6px -1.8px rgba(46, 64, 128, 0.325),
+    0px 6.9px 6.9px -2.3px rgba(46, 64, 128, 0.306),
+    0px 13.6px 13.6px -2.9px rgba(46, 64, 128, 0.26),
+    0px 30px 30px -3.5px rgba(46, 64, 128, 0.15);
+
+  /* Complex shadow inspired by the target example (light button) */
+  --shadow-light-button-inspired:
+    inset 0px 2px 4px 0px rgb(255, 255, 255),
+    0px 0.7px 0.7px -0.7px rgba(121, 152, 189, 0.344),
+    0px 2px 2px -1.4px rgba(121, 152, 189, 0.334),
+    0px 4.4px 4.4px -2.1px rgba(121, 152, 189, 0.315),
+    0px 9.8px 9.8px -2.8px rgba(121, 152, 189, 0.271),
+    0px 25px 25px -3.5px rgba(121, 152, 189, 0.15);
+
+  /* Shadow for the project cards */
+  --shadow-project-card:
+    0px 0.7px 0.7px -0.7px rgba(0, 0, 0, 0.24),
+    0px 1.8px 1.8px -1.3px rgba(0, 0, 0, 0.23),
+    0px 3.6px 3.6px -2px rgba(0, 0, 0, 0.22),
+    0px 6.9px 6.9px -2.7px rgba(0, 0, 0, 0.2),
+    0px 13.6px 13.6px -3.3px rgba(0, 0, 0, 0.16),
+    0px 30px 30px -4px rgba(0, 0, 0, 0.06);
+
+  /*
+  // --- Optional: Add border radius if desired ---
+  // --border-radius-neumorphic: 0.75rem; /* Example: rounded-xl 
+  */
+
+  /* New: Bento card shadow */
+  --shadow-bento-card:
+    0px 0.6px 0.6px -0.9px rgba(16, 49, 77, 0.137),
+    0px 1.8px 1.8px -1.8px rgba(16, 49, 77, 0.13),
+    0px 4.8px 4.8px -2.6px rgba(16, 49, 77, 0.114),
+    0px 15px 15px -3.5px rgba(16, 49, 77, 0.06);
+
+  /* New: Bento icon shadow */
+  --shadow-bento-icon:
+    0px 1.3px 0.5px -0.6px rgba(0, 0, 0, 0.09),
+    0px 3.2px 1.3px -1.3px rgba(0, 0, 0, 0.086),
+    0px 5.8px 2.3px -1.9px rgba(0, 0, 0, 0.082),
+    0px 9.7px 3.9px -2.5px rgba(0, 0, 0, 0.08),
+    0px 15.6px 6.2px -3.1px rgba(0, 0, 0, 0.07),
+    0px 25.5px 10.2px -3.8px rgba(0, 0, 0, 0.063),
+    0px 44px 17.6px -4.4px rgba(0, 0, 0, 0.04),
+    0px 80px 32px -5px rgba(0, 0, 0, 0);
+
+  /* New: Bento card image shadow (subtler) */
+  --shadow-bento-image:
+    0px 0.7px 0.7px -0.7px rgba(16, 49, 77, 0.235),
+    0px 1.8px 1.8px -1.3px rgba(16, 49, 77, 0.227),
+    0px 3.6px 3.6px -2px rgba(16, 49, 77, 0.22),
+    0px 6.9px 6.9px -2.7px rgba(16, 49, 77, 0.2),
+    0px 13.6px 13.6px -3.3px rgba(16, 49, 77, 0.157),
+    0px 30px 30px -4px rgba(16, 49, 77, 0.06);
+
+  --color-dark-blue: #1e293b;
+  --color-bg-light: #f9fafb;
+  --color-available-green: #31ee33; /* rgb(49, 238, 51) */
+  --color-separator-grey: rgba(94, 120, 143, 0.5); /* rgba(94, 120, 143, 0.5) */
+  --color-bento-card-bg: rgb(246, 251, 255); /* New: From example */
+}
+
+/* Class for elements to animate on scroll */
+.animate-on-scroll {
+  opacity: 0;
+  /* You could add transition here if preferred over animation */
+  /* transition: opacity 0.7s ease-out, transform 0.7s ease-out; */
+  /* transform: translateY(20px); */
+}
+
+/* Class added by JS when element is visible */
+.animate-on-scroll.is-visible {
+  animation: fadeInUp 0.7s ease-out forwards;
+}
+
+/* Keep delay utility classes (applied alongside animate-on-scroll) */
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+.delay-400 { animation-delay: 0.4s; }
+.delay-500 { animation-delay: 0.5s; }

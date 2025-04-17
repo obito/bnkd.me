@@ -1,0 +1,44 @@
+---
+import GitHubIcon from "./icons/GitHubIcon.astro";
+import LinkedInIcon from "./icons/LinkedInIcon.astro";
+import ReadCVIcon from "./icons/ReadCVIcon.astro";
+---
+
+<nav class="fixed top-0 left-0 right-0 z-50 w-full px-4 sm:px-6 lg:px-8 py-4">
+    <div class="container mx-auto flex items-center justify-between">
+        {/* Left Side: Name */}
+        <a href="/" class="text-xl font-serif font-medium text-dark-blue"> {/* Assuming font-serif matches the target */}
+            Youssef Benkdane
+        </a>
+
+        {/* Right Side: Availability & Socials */}
+        <div class="flex items-center gap-4">
+            {/* Available for Work */}
+            <a href="/contact" class="flex items-center gap-2 text-sm text-dark-blue hover:opacity-80 transition-opacity">
+                <span class="relative flex h-3 w-3">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-available-green opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-3 w-3 bg-available-green"></span>
+                  </span>
+                 available for work
+            </a>
+
+            {/* Separator */}
+            <div class="h-5 w-px bg-separator-grey"></div>
+
+            {/* Social Icons */}
+            <div class="flex items-center gap-3">
+                {/* Facebook Icon - Placeholder Link */}
+                <a href="/resume.pdf" target="_blank" rel="noopener" class="text-dark-blue opacity-80 hover:opacity-100 transition-opacity">
+                    <ReadCVIcon class="w-5 h-5 fill-current"/>
+                </a>
+                 {/* Instagram Icon - Placeholder Link */}
+                <a href="https://www.linkedin.com/in/youssef-bn" target="_blank" rel="noopener" class="text-dark-blue opacity-80 hover:opacity-100 transition-opacity">
+                    <LinkedInIcon class="w-5 h-5 fill-current"/>
+                </a>
+                 <a href="https://github.com/obito" target="_blank" rel="noopener" class="text-dark-blue opacity-80 hover:opacity-100 transition-opacity">
+                    <GitHubIcon class="w-5 h-5 fill-current"/>
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>
