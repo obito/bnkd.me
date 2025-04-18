@@ -15,7 +15,7 @@ const { class: className } = Astro.props;
     {/* Icon - Using scroll animation (keep levitate) */}
     <div class="w-16 h-16 md:w-20 md:h-20 mb-8 bg-dark-blue rounded-full flex items-center justify-center shadow-lg animate-levitate">
       {/* Replace with actual icon component or Image */}
-      <Image src={PlaceholderIcon} alt="BNKD Logo" class="w-14 h-14 md:w-20 md:h-20 filter brightness-0 invert" width={64} height={64} />
+      <Image src={PlaceholderIcon} alt="BNKD Logo" class="w-14 h-14 md:w-20 md:h-20 filter brightness-0 invert" loading="lazy" width={64} height={64} />
     </div>
 
     {/* Heading - Using scroll animation + delay */}
