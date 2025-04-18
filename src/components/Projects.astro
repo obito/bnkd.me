@@ -59,14 +59,14 @@ const loadMoreIcon = `<svg class="w-5 h-5" fill="none" stroke="currentColor" vie
       </a>
     </div>
 
-    {/* Projects Grid - Apply scroll animation to cards */}
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12 md:mb-16">
+    {/* Projects Grid - Constrained width and centered */}
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12 md:mb-16 max-w-5xl mx-auto">
       {sortedProjects.length > 0 ? (
         sortedProjects.slice(0, 4).map((project, index) => {
           // Calculate delay based on index (staggered)
           const delay = (index % 2 + 1) * 150; // Stagger delay based on column
           return (
-            <div class="animate-on-scroll" style={`animation-delay: ${delay}ms;`}>
+            <div class="animate-on-scroll justify-self-center" style={`animation-delay: ${delay}ms;`}>
               <ProjectCard project={project} />
             </div>
           );
