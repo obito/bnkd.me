@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>youssef benkdane</title>
+<meta name="description" content="Youssef Benkdane. I figure out where AI can help, then build the thing.">
+<meta property="og:title" content="youssef benkdane">
+<meta property="og:description" content="i figure out where ai can actually help, then i build the thing.">
+<meta property="og:url" content="https://bnkd.me">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><rect width='16' height='16' fill='%23111'/><text x='8' y='12.5' font-family='monospace' font-size='12' font-weight='bold' fill='%23eee' text-anchor='middle'>b</text></svg>">
+<style>
+  :root { --bg: #fafaf8; --fg: #1a1a1a; --dim: #8a8a85; --accent: #d9480f; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #111110; --fg: #e8e8e3; --dim: #77776f; --accent: #ff8a4c; }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--fg);
+    font: 15px/1.6 ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  }
+  main { max-width: 640px; margin: 0 auto; padding: 64px 16px 96px; }
+  pre.logo { margin: 0 0 32px; font-size: 14px; line-height: 1.15; color: var(--accent); }
+  h1, h2 { font-size: inherit; font-weight: normal; margin: 0; }
+  h2 { color: var(--dim); margin: 48px 0 16px; }
+  p { margin: 0 0 16px; }
+  a { color: inherit; text-decoration-color: var(--dim); text-underline-offset: 3px; }
+  a:hover { color: var(--accent); text-decoration-color: currentColor; }
+  .dim { color: var(--dim); }
+  ul { list-style: none; margin: 0; padding: 0; }
+  li { margin: 0 0 20px; }
+  li b { font-weight: bold; }
+  .links a { margin-right: 16px; }
+  .links a.email { color: var(--accent); text-decoration-color: currentColor; }
+  .links a.email:hover { text-decoration-thickness: 2px; }
+  .cursor { display: inline-block; width: .6em; height: 1.1em; vertical-align: -.2em; background: var(--accent); animation: blink 1.1s steps(1) infinite; }
+  @keyframes blink { 50% { opacity: 0; } }
+  @media (prefers-reduced-motion: reduce) { .cursor { animation: none; } }
+</style>
+</head>
+<body>
+<main>
+<pre class="logo" aria-label="BNKD"> ____   _   _  _  __  ____
+| __ ) | \ | || |/ / |  _ \
+|  _ \ |  \| || ' /  | | | |
+| |_) || |\  || . \  | |_| |
+|____/ |_| \_||_|\_\ |____/</pre>
+
+<h1>hey, i'm youssef.</h1>
+<p>i figure out where ai can actually help, then i build the thing.</p>
+<p>i've done everything from ad servers for france's biggest tv channel to bringing frontier ai into real companies.</p>
+<p>coding since 12, starting with minecraft plugins. from paris, based in dubai.</p>
+<p class="links">
+  <a class="email" href="mailto:me@bnkd.me">me@bnkd.me</a>
+  <a href="https://github.com/obito">github</a>
+  <a href="https://www.linkedin.com/in/youssef-bn">linkedin</a><span class="cursor" aria-hidden="true"></span>
+</p>
+
+<h2>// stuff i've built</h2>
+<ul>
+  <li><b>ode with anthropic</b> <span class="dim">· 2026–now</span><br>
+    applied ai engineer. the mission is to deliver the benefits of transformative ai broadly throughout the economy. my part is going into companies, finding where ai can help, and building it.</li>
+  <li><b>cozmox</b> <span class="dim">· 2025–2026</span><br>
+    tech lead. ai phone agents, custom-built for each client. led a team of 5, got response time from ~2s to under 800ms, and cut aws costs by 70%.</li>
+  <li><b>tf1</b> <span class="dim">· 2022–2025</span><br>
+    ad servers for france's biggest tv channel, handling millions of requests a day in under 200ms. ran the backend for the platform behind $200M+/yr in ad sales.</li>
+  <li><b>polyfact</b> <span class="dim">· 2024–2025</span><br>
+    a platform that watches political tv, radio and youtube (live and replays) and transcribes all of it. those transcripts feed a knowledge base, so you can look up everything a politician has said or done, and get pinged the moment your keywords come up. rebuilt the infra to be event-driven and cut the cloud bill in half.</li>
+  <li><b>themecloud</b> <span class="dim">· 2021–2022</span><br>
+    wordpress hosting. rebuilt the monolith into kubernetes, so every site got its own pod. sites fall asleep after 15 idle minutes and wake up on the next visit, which cut infra costs by 50%. also built a go api and a wordpress plugin so customers could manage their own infra without opening a support ticket.</li>
+  <li><b><a href="https://github.com/Soucoupe/cookie-api">cookie-api</a></b> <span class="dim">· 2020</span><br>
+    reverse-engineered akamai and perimeterx bot detection, then rebuilt their cookie generation in go. open source. got 49 stars and a lot of angry emails.</li>
+</ul>
+
+</main>
+</body>
+</html>
