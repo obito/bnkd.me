@@ -36,6 +36,9 @@
   .cursor { display: inline-block; width: .6em; height: 1.1em; vertical-align: -.2em; background: var(--accent); animation: blink 1.1s steps(1) infinite; }
   @keyframes blink { 50% { opacity: 0; } }
   @media (prefers-reduced-motion: reduce) { .cursor { animation: none; } }
+  pre.logo { cursor: default; user-select: none; }
+  .spark { position: fixed; pointer-events: none; color: var(--accent); font-size: 13px; line-height: 1; animation: spark .8s ease-out forwards; }
+  @keyframes spark { to { opacity: 0; transform: translate(var(--dx), 24px) rotate(var(--r)); } }
 </style>
 </head>
 <body>
@@ -73,5 +76,58 @@
 </ul>
 
 </main>
+<script>
+(() => {
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  // scramble the logo in on load, and again on hover
+  const logo = document.querySelector('.logo');
+  const final = logo.textContent;
+  const glyphs = '!<>-_\\/[]{}=+*^?#%@$01';
+  let running = false;
+  const scramble = () => {
+    if (running) return;
+    running = true;
+    const start = performance.now();
+    const tick = now => {
+      const t = now - start;
+      let done = true;
+      let col = 0;
+      logo.textContent = [...final].map(c => {
+        if (c === '\n') { col = 0; return c; }
+        col++;
+        if (c === ' ') return c;
+        if (t > col * 18 + 250 + Math.random() * 120) return c;
+        done = false;
+        return glyphs[Math.random() * glyphs.length | 0];
+      }).join('');
+      if (done) { logo.textContent = final; running = false; }
+      else requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  };
+  scramble();
+  logo.addEventListener('mouseenter', scramble);
+
+  // little ascii sparks trailing the mouse
+  if (!matchMedia('(pointer: fine)').matches) return;
+  const chars = '*+.\u00b7\u00b0x';
+  let last = 0;
+  addEventListener('mousemove', e => {
+    const now = performance.now();
+    if (now - last < 45) return;
+    last = now;
+    const s = document.createElement('span');
+    s.className = 'spark';
+    s.textContent = chars[Math.random() * chars.length | 0];
+    s.style.left = e.clientX + 'px';
+    s.style.top = e.clientY + 'px';
+    s.style.setProperty('--dx', (Math.random() * 20 - 10) + 'px');
+    s.style.setProperty('--r', (Math.random() * 180 - 90) + 'deg');
+    document.body.appendChild(s);
+    s.addEventListener('animationend', () => s.remove());
+  });
+})();
+</script>
 </body>
 </html>
